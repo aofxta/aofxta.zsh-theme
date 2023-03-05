@@ -8,15 +8,13 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 function preexec() {
   timer=${timer:-$SECONDS}
-  time_msg=""
 }
 
 function precmd() {
     if [ $timer ]; then
         timer_sec=$(($SECONDS - $timer))
-        timer_show="" #$(($SECONDS - $timer))
+        timer_show=""
         if [[ $timer_sec -ge $min_show_time ]]; then
-            #RPROMPT='%{$fg_bold[red]%}(${timer_show}s)%f%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
             hours=$(($timer_sec/3600))
             min=$(($timer_sec/60))
             sec=$(($timer_sec%60))
@@ -32,15 +30,15 @@ function precmd() {
                     timer_show="$fg[red]$min m $sec s"
                 fi
             fi
-            #printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
             RPROMPT='%{$fg_bold[red]%}(${timer_show})%f%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
-            #else
-            #RPROMPT='%{$fg_bold[white]%}[%*]%f'
+        else
+            RPROMPT='%{$fg_bold[white]%}[%*]%f'
         fi
         unset timer
     fi
 }
 
-autoload -Uz add-zsh-hook
+# autoload -Uz add-zsh-hook
+autoload -U add-zsh-hook
 add-zsh-hook preexec preexec
 add-zsh-hook precmd precmd
