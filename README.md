@@ -4,7 +4,7 @@
 ## Usage
 Download:
 ```sh
-git clone https://github.com/aofxta/aofxta.zsh-theme.git ~/.oh-my-zsh/themes/aofxta.zsh-theme
+wget -O ~/.oh-my-zsh/themes/aofxta.zsh-theme https://raw.githubusercontent.com/aofxta/aofxta.zsh-theme/main/aofxta.zsh-theme
 ```
 Then edit `.zshrc` to use that theme.
 ```sh
