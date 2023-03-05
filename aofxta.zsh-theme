@@ -8,32 +8,32 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 function preexec() {
   timer=${timer:-$SECONDS}
+  time_msg=""
 }
 
 function precmd() {
     if [ $timer ]; then
-        timer_show=$(($SECONDS - $timer))
-        if [[ $timer_show -ge $min_show_time ]]; then
+        timer_sec=$(($SECONDS - $timer))
+        timer_show="" #$(($SECONDS - $timer))
+        if [[ $timer_sec -ge $min_show_time ]]; then
             #RPROMPT='%{$fg_bold[red]%}(${timer_show}s)%f%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
-            if [ -n "$timer" ]; then
-                hours=$(($timer/3600))
-                min=$(($timer/60))
-                sec=$(($timer%60))
-                if [ "$timer" -le 60 ]; then
-                    timer_show="$fg[green]$timer s"
-                elif [ "$timer" -gt 60 ] && [ "$timer" -le 180 ]; then
-                    timer_show="$fg[yellow]$min m $sec s"
+            hours=$(($timer_sec/3600))
+            min=$(($timer_sec/60))
+            sec=$(($timer_sec%60))
+            if [ "$timer_sec" -le 60 ]; then
+                timer_show="$fg[green]$timer_sec s"
+            elif [ "$timer_sec" -gt 60 ] && [ "$timer_sec" -le 180 ]; then
+                timer_show="$fg[yellow]$min m $sec s"
+            else
+                if [ "$hours" -gt 0 ]; then
+                    min=$(($min%60))
+                    timer_show="$fg[red]$hours h $min m $sec s"
                 else
-                    if [ "$hours" -gt 0 ]; then
-                        min=$(($min%60))
-                        timer_show="$fg[red]$hours h $min m $sec s"
-                    else
-                        timer_show="$fg[red]$min m $sec s"
-                    fi
+                    timer_show="$fg[red]$min m $sec s"
                 fi
-                #printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
-                RPROMPT='%{$fg_bold[red]%}(${timer_show}s)%f%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
             fi
+            #printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
+            RPROMPT='%{$fg_bold[red]%}(${timer_show})%f%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
         else
             RPROMPT='%{$fg_bold[white]%}[%*]%f'
         fi
