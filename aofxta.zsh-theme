@@ -38,7 +38,7 @@ function precmd() {
     fi
 }
 
-# autoload -Uz add-zsh-hook
-autoload -U add-zsh-hook
-add-zsh-hook preexec preexec precmd
-# add-zsh-hook precmd precmd
+autoload -Uz add-zsh-hook
+# autoload -U add-zsh-hook
+add-zsh-hook preexec preexec
+add-zsh-hook precmd precmd
