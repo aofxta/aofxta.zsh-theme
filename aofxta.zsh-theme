@@ -34,8 +34,8 @@ function precmd() {
             fi
             #printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
             RPROMPT='%{$fg_bold[red]%}(${timer_show})%f%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
-        else
-            RPROMPT='%{$fg_bold[white]%}[%*]%f'
+            #else
+            #RPROMPT='%{$fg_bold[white]%}[%*]%f'
         fi
         unset timer
     fi
