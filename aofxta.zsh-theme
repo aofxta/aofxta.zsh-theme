@@ -19,18 +19,18 @@ function precmd() {
             min=$(($timer_sec/60))
             sec=$(($timer_sec%60))
             if [ "$timer_sec" -le 60 ]; then
-                timer_show="$fg[green]$timer_sec s"
+                timer_show="%{$fg[green]%}(${timer_sec}s)"
             elif [ "$timer_sec" -gt 60 ] && [ "$timer_sec" -le 180 ]; then
-                timer_show="$fg[yellow]$min m $sec s"
+                timer_show="%{$fg[yellow]%}(${min}m ${sec}s)"
             else
                 if [ "$hours" -gt 0 ]; then
                     min=$(($min%60))
-                    timer_show="$fg[red]$hours h $min m $sec s"
+                    timer_show="%{$fg[red]%}(${hours}h ${min}m ${sec}s)"
                 else
-                    timer_show="$fg[red]$min m $sec s"
+                    timer_show="%{$fg[red]%}(${min}m ${sec}s)"
                 fi
             fi
-            RPROMPT='%{$fg_bold[red]%}(${timer_show})%f%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
+            RPROMPT='${timer_show} %{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
         else
             RPROMPT='%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
         fi
