@@ -1,5 +1,5 @@
 # aofxta.zsh-theme
- Aof customize theme oh-my-zsh adds execution time
+I customize theme oh-my-zsh adds execution time
 
 ## Usage
 Download:
@@ -10,3 +10,6 @@ Then edit `.zshrc` to use that theme.
 ```sh
 ZSH_THEME="aofxta"
 ```
+
+Screenshot:
+![Screenshot](assets/screenshot.png)
