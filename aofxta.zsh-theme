@@ -30,9 +30,9 @@ function precmd() {
                     timer_show="%{$fg[red]%}(${min}m ${sec}s)"
                 fi
             fi
-            RPROMPT='${timer_show} %{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
+            RPROMPT='${timer_show} %{$fg_bold[white]%}[%*]%f %{$reset_color%}'
         else
-            RPROMPT='%{$fg_bold[white]%}[%*]%f %{$reset_color%}%'
+            RPROMPT='%{$fg_bold[white]%}[%*]%f %{$reset_color%}'
         fi
         unset timer
     fi
