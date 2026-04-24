@@ -8,7 +8,14 @@ wget -O ~/.oh-my-zsh/themes/aofxta.zsh-theme https://raw.githubusercontent.com/a
 ```
 Then edit `.zshrc` to use that theme.
 ```sh
+nano ~/.zshrc
+```
+```sh
 ZSH_THEME="aofxta"
+```
+Reload Zsh
+```sh
+source ~/.zshrc
 ```
 
 Screenshot:

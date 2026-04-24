@@ -16,7 +16,8 @@ function precmd() {
     if [ $timer ]; then
         # Milisecond (ms)
         local dt=$(( EPOCHREALTIME - timer ))
-        local total_ms=$(( int(dt * 1000) ))
+        local total_ms_float=$(( dt * 1000 ))
+        local total_ms=${total_ms_float%.*}
         local timer_show=""
         # If min_show_time default ms (0)
         local min_show_ms=$(( ${min_show_time:-0} * 1000 ))
