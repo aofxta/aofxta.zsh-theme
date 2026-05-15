@@ -1,8 +1,12 @@
 # aofxta.zsh-theme
-I customize theme oh-my-zsh adds execution time
+I customize theme [oh-my-zsh](https://ohmyz.sh/) adds execution time
 
 ## Usage
-Download:
+Install:
+```sh
+curl -Lo ~/.oh-my-zsh/themes/aofxta.zsh-theme https://raw.githubusercontent.com/aofxta/aofxta.zsh-theme/main/aofxta.zsh-theme
+```
+OR
 ```sh
 wget -O ~/.oh-my-zsh/themes/aofxta.zsh-theme https://raw.githubusercontent.com/aofxta/aofxta.zsh-theme/main/aofxta.zsh-theme
 ```
